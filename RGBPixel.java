@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package image.processing;
 
 /**
@@ -58,28 +53,27 @@ public class RGBPixel {
 
     /*επιστρέφει την τιμή του πράσινου χρώματος.*/ 
     public short getGreen(){
-	return (short)(color<<16>>>24);
+	return (short)((color & 0x00FF00)>>>8);
     }
 
     /*επιστρέφει την τιμή του μπλε χρώματος.*/
     public short getBlue(){
-	return (short)(color<<24>>>24);
+	return (short)(color & 0x0000FF);
     }
 
     /*θέτει την τιμή του κόκκινου χρώματος.*/
     public void setRed(short red){
-	color = ((color<<16)>>>16)+(red<<16);
+	color = (color & 0x00FFFF)+(red<<16);
     }
 
     /*θέτει την τιμή του πράσινου χρώματος.*/
     public void setGreen(short green){
-	int blueHolder = (color<<24)>>>24;
-	color = ((color>>>16)<<16)+(green<<8)+blueHolder;
+	color = (color & 0xFF00FF)+(green<<8);
     }
 
     /*θέτει την τιμή του μπλε χρώματος.*/
     public void setBlue(short blue){
-	color = ((color>>>8)<<8)+blue;
+	color = (color & 0xFFFF00)+blue;
     }
 
     /*Επιστρέφει έναν ακέραιο που περιέχει τα 3 RGB χρώματα.*/

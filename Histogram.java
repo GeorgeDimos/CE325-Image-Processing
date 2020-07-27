@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package image.processing;
 
 import java.io.File;
@@ -63,15 +58,18 @@ public class Histogram {
     
     /*Η μέθοδος εξισορροπεί το ιστόγραμμα.*/
     public void equalize(){
+	
 	double[] px = new double[histogram.length];
-	for(int i=0;i<histogram.length;i++){
+	for(int i=0; i<histogram.length; i++){
 	    px[i] = ((double)histogram[i])/numOfPixels;
 	}
+	
 	double[] cdf = new double[histogram.length];
 	cdf[0] = px[0];
-	for(int i=1;i<histogram.length;i++){
+	for(int i=1; i<histogram.length; i++){
 	    cdf[i] = cdf[i-1]+px[i];
 	}
+	
 	equalized = new int[histogram.length];
 	for(int i=1;i<histogram.length;i++){
 	    equalized[i]= (int) (cdf[i]*235);

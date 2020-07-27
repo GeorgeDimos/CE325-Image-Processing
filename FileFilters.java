@@ -1,41 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package image.processing;
 
-/**
- *
- * @author George
- */
-
 import java.io.*;
-import javax.swing.*;
-import javax.swing.filechooser.*;
 
 class PPMFileFilter extends javax.swing.filechooser.FileFilter {
+  @Override
   public boolean accept(File file) {
     if(file.isDirectory())
       return true;
     String name = file.getName();    
-    if(name.length()>4 && name.substring(name.length()-4, name.length()).toLowerCase().equals(".ppm"))
-      return true;
-    return false;
+    return name.length()>4 && name.substring(name.length()-4, name.length()).toLowerCase().equals(".ppm");
   }
   
+  @Override
   public String getDescription() { return "PPM File"; }
 }
 
 class YUVFileFilter extends javax.swing.filechooser.FileFilter {
+  @Override
   public boolean accept(File file) {
     if(file.isDirectory())
       return true;
     String name = file.getName();
-    if(name.length()>4 && name.substring(name.length()-4, name.length()).toLowerCase().equals(".yuv"))
-      return true;
-    return false;
+    return name.length()>4 && name.substring(name.length()-4, name.length()).toLowerCase().equals(".yuv");
   }
   
+  @Override
   public String getDescription() { return "YUV File"; }
 }
